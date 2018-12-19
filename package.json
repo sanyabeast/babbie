@@ -1,0 +1,49 @@
+{
+    "name": "babbie",
+    "version": "1.0.0-b",
+    "description": "Nano Terminal",
+    "author": "sanyabeast <a.gvrnsk@gmail.com>",
+    "scripts" : {
+        "install" : "yarn install && node/scripts/install_git_deps.js",
+        "build": "cross-env NODE_ENV=production webpack",
+        "start" : "cross-env NODE_ENV=development node scripts/webpack_server.js"
+    },
+    "devDependencies" : {
+        "cross-env" : "latest",
+
+        "@babel/core" : "latest",
+        "@babel/plugin-syntax-dynamic-import" : "latest",
+        "@babel/preset-env" : "latest",
+        "babel-loader" : "8.0.4",
+
+        "webpack" : "latest",
+        "webpack-cli" : "latest",
+        "webpack-serve" : "latest",
+        "html-webpack-plugin" : "latest",
+        "terser": "latest",
+        "terser-webpack-plugin": "latest",
+        "copy-webpack-plugin" : "latest",
+
+        "css-loader" : "latest",
+        "node-sass" : "latest",
+        "sass-loader" : "latest",
+        "vue-loader" : "15.4.2",
+        "vue-style-loader": "latest",
+        "vue-svg-loader": "latest",
+
+        "node-sass-magic-importer" : "latest",
+        "vue-template-compiler": "latest",
+        
+        "vuex": "latest",
+        "vue" : "latest",
+        "opn" : "latest",
+
+        "tweener" : "git://github.com/sanyabeast/tweener.git",
+        "unicycle" : "git://github.com/sanyabeast/unicycle.git",
+
+        "jsonfile" : "latest",
+        "colors" : "latest",
+        "fs-extra" : "latest",
+        "rimraf" : "latest"
+    }
+}

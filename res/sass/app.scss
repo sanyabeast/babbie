@@ -1,0 +1,10 @@
+.app {
+	perspective: 400px;
+
+	.test {
+		color: #fff;
+		width: 150px;
+		height: 150px;
+		animation: test 10s infinite linear;
+	}
+}

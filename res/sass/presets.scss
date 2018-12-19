@@ -1,0 +1,49 @@
+.fit-width {
+	width: 100%;
+}
+
+.fit-height {
+	height: 100%;
+}
+
+.pos-absolute {
+	position: absolute;
+}
+
+.pos-relative {
+	position: relative;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-grow {
+	display: flex;
+	flex-grow: 1;
+}
+
+.flex-no-shrink {
+	display: flex;
+	flex-shrink: 0;
+}
+
+.flex-align-center {
+	display: flex;
+	align-items:center;
+}
+
+.flex-justify-center {
+	display: flex;
+	justify-content: center;
+}
+
+.circle {
+	border-radius: 50%;
+}
