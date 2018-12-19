@@ -47,6 +47,8 @@
         "tweener" : "git://github.com/sanyabeast/tweener.git",
         "unicycle" : "git://github.com/sanyabeast/unicycle.git",
 
+        "@types/lodash" : "latest",
+
         "jsonfile" : "latest",
         "colors" : "latest",
         "fs-extra" : "latest",

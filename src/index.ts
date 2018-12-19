@@ -9,9 +9,13 @@ declare global {
     	$root: any,
     	HTMLElement: any
     }
+
+    namespace Vuex {
+    	export interface Store {}
+    }
 }
 
 window.app = new App({
-	element: "body",
-	package_info : packageInfo
+	element: document.body,
+	package_info : {...packageInfo}
 })

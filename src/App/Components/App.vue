@@ -12,7 +12,9 @@
   	</div>
 </template>
 
-<script>
+<script lang="ts">
+
+let isDone: boolean = false;
 
 export default {
     name: "App",

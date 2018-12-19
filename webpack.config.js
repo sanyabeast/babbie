@@ -41,7 +41,13 @@ const config = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-              }, 
+                options: {
+                    loaders: {
+                        ts: 'ts-loader'
+                    },
+                    esModule: true
+                }
+            }, 
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -52,7 +58,7 @@ const config = {
                 loader: 'ts-loader',
                 exclude: /node_modules/,
                 options: {
-                  appendTsSuffixTo: [/\.vue$/],
+                    appendTsSuffixTo: [/\.vue$/],
                 }
             },
             {
@@ -74,7 +80,7 @@ const config = {
                         loader: 'sass-loader',
                         options: {
                             importer: nodeSassMagicImporter(),
-                    },
+                        },
                     },
                 ],
             }, 
