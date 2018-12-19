@@ -1,18 +1,10 @@
 import Vue from "vue"
-import StoreCreator from "./StoreCreator"
-import App from "./Components/App.vue"
-
-window.$tpl = function(tpl, tokens){
-	var result = tpl;
-	_.forEach(tokens, (v, k)=>{
-		var regexp = new RegExp("[$]{"+k+"}", "gm");
-		regexp.test(result) && (result = result.replace(regexp, v));
-	});
-	return result;
-}
+import Vuex from "vuex"
+import StoreCreator from "StoreCreator.ts"
+import App from "components/App.vue"
 
 class Babbie {
-	constructor(params){
+	constructor(params: any){
 		var element = null;
 
 		if (typeof params !== "object"){
@@ -31,7 +23,7 @@ class Babbie {
 		var dom = document.createElement("div");
 		element.appendChild(dom);
 
-		var $store = new StoreCreator(params);
+		let $store = new StoreCreator(params).store;
 
 		$store.commit("setRoot", new Vue({
 	      	el:  dom,

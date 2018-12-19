@@ -1,5 +1,5 @@
 export default {
-	setRoot : function(state, root){
+	setRoot : function(state: any, root: any){
 		state.$root = root;
 	},
 }

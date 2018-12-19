@@ -4,7 +4,7 @@
     "description": "Nano Terminal",
     "author": "sanyabeast <a.gvrnsk@gmail.com>",
     "scripts" : {
-        "install" : "yarn install && node/scripts/install_git_deps.js",
+        "setup" : "yarn install && node/scripts/install_git_packages.js",
         "build": "cross-env NODE_ENV=production webpack",
         "start" : "cross-env NODE_ENV=development node scripts/webpack_server.js"
     },
@@ -14,7 +14,7 @@
         "@babel/core" : "latest",
         "@babel/plugin-syntax-dynamic-import" : "latest",
         "@babel/preset-env" : "latest",
-        "babel-loader" : "8.0.4",
+        "typescript" : "latest",
 
         "webpack" : "latest",
         "webpack-cli" : "latest",
@@ -30,12 +30,18 @@
         "vue-loader" : "15.4.2",
         "vue-style-loader": "latest",
         "vue-svg-loader": "latest",
+        "babel-loader" : "8.0.4",
+        "ts-loader" : "latest",
 
         "node-sass-magic-importer" : "latest",
         "vue-template-compiler": "latest",
         
         "vuex": "latest",
         "vue" : "latest",
+        "vue-class-component": "^6.0.0",
+        "vue-property-decorator": "^6.0.0",
+        "vue-router": "^3.0.1",
+
         "opn" : "latest",
 
         "tweener" : "git://github.com/sanyabeast/tweener.git",

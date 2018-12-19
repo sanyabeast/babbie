@@ -10,15 +10,17 @@ const sourceMap = env === 'development';
 
 const config = {
     devtool: sourceMap ? 'cheap-module-eval-source-map' : undefined,
-    entry: path.join(__dirname, 'src', 'main.js'),
+    entry: path.join(__dirname, 'src', 'index.ts'),
     mode: env,
     output: {
-        publicPath: '/',
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
     resolve: {
         modules: ["src", "src/App", "node_modules"],
+        extensions: [ '.tsx', '.ts', '.js' ],
         alias: {
-            vue: 'vue/dist/vue.js',
+            vue$: 'vue/dist/vue.esm.js',
             unicycle: "unicycle/unicycle.js"
         }
     },
@@ -34,27 +36,56 @@ const config = {
         ])
     ],
     module: {
-        rules: [{
-            test: /\.vue$/,
-            loader: 'vue-loader',
-        }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            include: [path.join(__dirname, 'src')],
-        }, {
-            test: /\.scss$/,
-            use: [
-                'vue-style-loader',
-                'css-loader', {
-                    loader: 'sass-loader',
-                }, {
-                    loader: 'sass-loader',
-                    options: {
-                        importer: nodeSassMagicImporter(),
+        rules: 
+        [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+              }, 
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [path.join(__dirname, 'src')],
+            }, 
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                  appendTsSuffixTo: [/\.vue$/],
+                }
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: 
+                [
+                    'vue-style-loader',
+                    'css-loader', {
+                        loader: 'sass-loader',
+                    }, 
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            importer: nodeSassMagicImporter(),
                     },
-                },
-            ],
-        }, ],
+                    },
+                ],
+            }, 
+        ],
+    },
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true
+    },
+    performance: {
+        hints: false
     },
     optimization: {
         minimizer: [new TerserPlugin({
