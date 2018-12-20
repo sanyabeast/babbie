@@ -11,8 +11,10 @@ declare global {
     }
 
     namespace Vuex {
-    	export interface Store {}
-    }
+    	export interface Store<>{}
+	}
+	
+	interface Vue {}
 }
 
 window.app = new Babbie.Babbie({

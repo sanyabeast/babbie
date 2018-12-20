@@ -1,5 +1,5 @@
 import Vue from "vue"
-import Vuex from "vuex"
+import { Store } from "vuex"
 import StoreCreator from "./StoreCreator"
 import App from "components/App.vue"
 import axios from "axios";
@@ -9,12 +9,13 @@ namespace Babbie {
 		element: string|HTMLElement;
 		package_info: object;
 	}
+
 	/** 
-	 * Basic class
+	 * Babbie class
 	 */
 	export class Babbie {
-		protected $root: Vue|null;
-		protected $store: Vuex.Store|null;
+		protected $root: Vue|undefined;
+		protected $store: Store<any>|undefined;
 		protected params: Params;
 
 		constructor(params: Params){
@@ -28,24 +29,22 @@ namespace Babbie {
 			}
 
 			if (element === null){
-				this.$store = null;
-				this.$root = null;
+				this.$store = undefined;
+				this.$root = undefined;
 			} else {
 				let dom: HTMLElement = document.createElement("div");
 				element.appendChild(dom);
 
-				let $store = new StoreCreator(params).store;
+				this.$store = new StoreCreator(params).store;
 
-				$store.commit("setRoot", new Vue({
+				this.$store.commit("setRoot", new Vue({
 			      	el:  dom,
-			      	store : $store,
+			      	store: this.$store,
 			      	components: { App },
 			      	template: '<App/>'
 			    }));
 
-
-			    this.$store = window.$store = $store;
-				this.$root = window.$root = $store.state.$root;
+				this.$root = window.$root = this.$store.state.$root;
 			}
 		}
 	}

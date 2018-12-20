@@ -1,5 +1,5 @@
 export default {
-	randomNumber(){
+	randomNumber(): number{
 		return Math.random()
 	}
 }

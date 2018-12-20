@@ -1,6 +1,5 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import Babbie from "App/Babbie";
 
 import state from "./store/state"
 import getters from "./store/getters"
