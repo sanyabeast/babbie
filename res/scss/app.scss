@@ -1,10 +1,11 @@
 .app {
 	perspective: 400px;
+	animation: cycle-box-shadow 40s infinite linear, cycle-background-color 20s infinite linear;
 
 	.test {
 		color: #fff;
 		width: 150px;
 		height: 150px;
-		animation: test 5s infinite linear;
+		animation: cycle-background-color 10s infinite ease-in-out, test 5s infinite linear;
 	}
 }

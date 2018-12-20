@@ -15,3 +15,31 @@
 		transform: rotate3d(0,1,1,360deg);		
 	}
 }
+
+@keyframes cycle-box-shadow {
+	0%    {box-shadow: inset 0px 0px 360px 164px #26243e;}
+	10%   {box-shadow: inset 0px 0px 320px 164px #3e242a;}
+	20%   {box-shadow: inset 0px 0px 280px 164px #243e25;}
+	30%   {box-shadow: inset 0px 0px 320px 164px #150c13;}
+	40%   {box-shadow: inset 0px 0px 360px 164px #3e2424;}
+	50%   {box-shadow: inset 0px 0px 400px 164px #243e3e;}
+	60%   {box-shadow: inset 0px 0px 440px 164px #231b15;}
+	70%   {box-shadow: inset 0px 0px 400px 164px #28243e;}
+	80%   {box-shadow: inset 0px 0px 360px 164px #35243e;}
+	90%   {box-shadow: inset 0px 0px 320px 164px #3e2434;}
+	100%  {box-shadow: inset 0px 0px 360px 164px #231518;}
+}
+
+@keyframes cycle-background-color {
+	0%    {background-color: #f44336}
+	10%   {background-color: #e91e63}
+	20%   {background-color: #9c27b0}
+	30%   {background-color: #3f51b5}
+	40%   {background-color: #2196f3}
+	50%   {background-color: #00bcd4}
+	60%   {background-color: #009688}
+	70%   {background-color: #4caf50}
+	80%   {background-color: #cddc39}
+	90%   {background-color: #ffeb3b}
+	100%  {background-color: #ff9800}
+}
