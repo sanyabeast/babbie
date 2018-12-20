@@ -39,6 +39,7 @@
         "ts-loader" : "latest",
         "cpp-wasm-loader" : "latest",
         "wasm-loader" : "latest",
+        "isomorphic-style-loader" : "latest",
 
         "node-sass-magic-importer" : "latest",
         "vue-template-compiler": "latest",
