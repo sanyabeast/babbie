@@ -14,9 +14,9 @@ namespace Babbie {
 	 * Babbie class
 	 */
 	export class Babbie {
-		protected $root: Vue|undefined;
-		protected $store: Store<any>|undefined;
-		protected params: Params;
+		protected $root?: Vue;
+		protected $store?: Store<any>;
+		protected params?: Params;
 
 		constructor(params: Params){
 			this.params = params; 
