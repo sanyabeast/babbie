@@ -1,9 +1,9 @@
-import App from "App"
+import Babbie from "./App/Babbie"
 import packageInfo from "../package.json"
 
 declare global {
     interface Window { 
-    	app: App; 
+    	app: Babbie.Babbie; 
     	clog: any,
     	$store: any,
     	$root: any,
@@ -15,7 +15,7 @@ declare global {
     }
 }
 
-window.app = new App({
+window.app = new Babbie.Babbie({
 	element: document.body,
 	package_info : {...packageInfo}
 })

@@ -1,11 +1,12 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import Babbie from "App/Babbie";
 
-import state from "Store/state.ts"
-import getters from "Store/getters.ts"
-import mutations from "Store/mutations.ts"
-import modules from "Store/modules.ts"
-import actions from "Store/actions.ts"
+import state from "./store/state"
+import getters from "./store/getters"
+import mutations from "./store/mutations"
+import modules from "./store/modules"
+import actions from "./store/actions"
 
 Vue.use(Vuex);
 
