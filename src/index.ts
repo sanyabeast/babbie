@@ -1,5 +1,11 @@
 import Babbie from "./App/Babbie"
 import packageInfo from "../package.json"
+import Coffee from "./Coffee.js"
+
+const Tea = require("./Tea.coffee")
+
+console.log(new Tea("green"))
+console.log(new Coffee("latthe"))
 
 declare global {
     interface Window { 

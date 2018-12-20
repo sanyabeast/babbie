@@ -9,7 +9,8 @@
         "experimentalDecorators": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "strictNullChecks" : false
+        "strictNullChecks" : false,
+        "noImplicitAny" : false 
     },
     "include": [
         "./src/**/*",

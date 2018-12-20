@@ -24,8 +24,8 @@ export default {
    
 </script>
 
-<style lang="sass">
-  import "../../../res/sass/presets.scss";
-  import "../../../res/sass/app.scss";
-  import "../../../res/sass/animations.scss";
+<style lang="scss">
+  @import "../../../res/scss/presets.scss";
+  @import "../../../res/scss/app.scss";
+  @import "../../../res/scss/animations.scss";
 </style>

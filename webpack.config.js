@@ -56,7 +56,8 @@ const config = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        ts: 'ts-loader'
+                        ts: 'ts-loader',
+                        scss: 'vue-style-loader!css-loader!sass-loader'
                     },
                     esModule: true
                 }
@@ -64,7 +65,7 @@ const config = {
             /** js */
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
+                use: ["thread-loader", 'babel-loader'],
                 include: [path.join(__dirname, 'src')],
             }, 
             /** ts */
@@ -113,21 +114,16 @@ const config = {
                 use: 
                 [
                     'vue-style-loader',
-                    'css-loader', {
-                        loader: 'sass-loader',
-                    }, 
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            importer: nodeSassMagicImporter(),
-                        },
-                    },
+                    'css-loader',
+                    'sass-loader'
                 ],
             }, 
             /** yaml */
             { test: /\.yaml$/, include: [path.join(__dirname, 'res')], use: ["json-loader", 'yaml-loader'] },
             /** xml */
             { test: /\.xml$/, include: [path.join(__dirname, 'res')], loader: 'xml-loader' },
+            /** coffee */
+            { test: /\.coffee$/, use: [ 'coffee-loader' ] },
             /** json */
             // { test: /\.json$/, loader: 'json-loader' }
         ],
