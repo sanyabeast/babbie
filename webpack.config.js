@@ -62,7 +62,7 @@ const config = {
                         ts: 'ts-loader',
                         scss: [
                             "vue-style-loader",
-                            "css-loader",
+                            { loader: 'css-loader', options: { sourceMap: true } },
                             {
                                 loader: "postcss-loader",
                                 options: {
@@ -74,7 +74,7 @@ const config = {
                                     sourceMap: true
                                 }
                             },
-                            "sass-loader"
+                            { loader: 'sass-loader', options: { sourceMap: true } }
                         ]
                     },
                     esModule: true
@@ -132,7 +132,7 @@ const config = {
                 use: 
                 [
                     'vue-style-loader',
-                    'css-loader',
+                    { loader: 'css-loader', options: { sourceMap: true } },
                     {
                         loader: "postcss-loader",
                         options: {
@@ -144,7 +144,7 @@ const config = {
                             sourceMap: true
                         }
                     },
-                    'sass-loader'
+                    { loader: 'sass-loader', options: { sourceMap: true } }
                 ],
             }, 
             /** yaml */
