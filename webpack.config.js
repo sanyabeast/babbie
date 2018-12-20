@@ -10,6 +10,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const notifier = require('node-notifier');
+const autoprefixer = require('autoprefixer');
 
 const env = process.env.NODE_ENV;
 const sourceMap = env === 'development';
@@ -59,7 +60,22 @@ const config = {
                 options: {
                     loaders: {
                         ts: 'ts-loader',
-                        scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader'
+                        scss: [
+                            "vue-style-loader",
+                            "css-loader",
+                            {
+                                loader: "postcss-loader",
+                                options: {
+                                    plugins: [
+                                        autoprefixer({
+                                            browsers:['ie >= 8', 'last 4 version']
+                                        })
+                                    ],
+                                    sourceMap: true
+                                }
+                            },
+                            "sass-loader"
+                        ]
                     },
                     esModule: true
                 }
@@ -117,6 +133,17 @@ const config = {
                 [
                     'vue-style-loader',
                     'css-loader',
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: [
+                                autoprefixer({
+                                    browsers:['ie >= 8', 'last 4 version']
+                                })
+                            ],
+                            sourceMap: true
+                        }
+                    },
                     'sass-loader'
                 ],
             }, 
