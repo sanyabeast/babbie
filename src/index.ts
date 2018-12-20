@@ -7,7 +7,8 @@ declare global {
     	clog: any,
     	$store: any,
     	$root: any,
-    	HTMLElement: any
+		HTMLElement: any,
+		require: any
     }
 
     namespace Vuex {
@@ -17,7 +18,9 @@ declare global {
 	interface Vue {}
 }
 
-window.app = new Babbie.Babbie({
+let app: Babbie.Babbie = new Babbie.Babbie({
 	element: document.body,
 	package_info : {...packageInfo}
 })
+
+window.app = app;

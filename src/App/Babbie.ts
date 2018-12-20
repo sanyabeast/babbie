@@ -3,7 +3,10 @@ import { Store } from "vuex"
 import StoreCreator from "./StoreCreator"
 import App from "components/App.vue"
 import axios from "axios";
-import { Promise } from "q";
+
+const yaml: object = require("test.yaml")
+const xml: object = require("test.xml")
+console.log(yaml, xml)
 
 namespace Babbie {
 	export interface Params {

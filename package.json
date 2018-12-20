@@ -40,6 +40,9 @@
         "cpp-wasm-loader" : "latest",
         "wasm-loader" : "latest",
         "isomorphic-style-loader" : "latest",
+        "yaml-loader" : "latest",
+        "json-loader" : "latest",
+        "xml-loader" : "latest",
 
         "node-sass-magic-importer" : "latest",
         "vue-template-compiler": "latest",
@@ -58,6 +61,7 @@
         "store" : "latest",
 
         "@types/lodash" : "latest",
+        "@types/node" : "latest",
 
         "jsonfile" : "latest",
         "colors" : "latest",

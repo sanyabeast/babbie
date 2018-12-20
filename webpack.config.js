@@ -22,7 +22,7 @@ const config = {
         path: path.resolve(__dirname, 'dist')
     },
     resolve: {
-        modules: ["src", "src/App", "node_modules"],
+        modules: ["src", "src/App", "node_modules", "res"],
         extensions: [ '.tsx', '.ts', '.js' ],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
@@ -50,6 +50,7 @@ const config = {
     module: {
         rules: 
         [
+            /** vue */
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
@@ -60,19 +61,27 @@ const config = {
                     esModule: true
                 }
             }, 
+            /** js */
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [path.join(__dirname, 'src')],
             }, 
+            /** ts */
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
                 exclude: /node_modules/,
-                options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                }
+                use: [
+                    "babel-loader", 
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [/\.vue$/],
+                        }
+                    }
+                ]
             },
+            /** file */
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
@@ -80,6 +89,7 @@ const config = {
                     name: '[name].[ext]?[hash]'
                 }
             },
+            /** cpp */
             {
                 test: /\.(c|cpp)$/,
                 use: {
@@ -95,10 +105,9 @@ const config = {
                     }
                 }
             },
-            {
-                test: /\.wasm$/,
-                loader: "wasm-loader"
-            },
+            /** wasm */
+            { test: /\.wasm$/, loader: "wasm-loader" },
+            /* scss */
             {
                 test: /\.scss$/,
                 use: 
@@ -115,6 +124,12 @@ const config = {
                     },
                 ],
             }, 
+            /** yaml */
+            { test: /\.yaml$/, include: [path.join(__dirname, 'res')], use: ["json-loader", 'yaml-loader'] },
+            /** xml */
+            { test: /\.xml$/, include: [path.join(__dirname, 'res')], loader: 'xml-loader' },
+            /** json */
+            // { test: /\.json$/, loader: 'json-loader' }
         ],
     },
     devServer: {
