@@ -8,6 +8,7 @@ const JsDocPlugin = require('jsdoc-webpack4-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const notifier = require('node-notifier');
 
 const env = process.env.NODE_ENV;
@@ -46,6 +47,7 @@ const config = {
         new DashboardPlugin(),
         new BundleAnalyzerPlugin(),
         new FriendlyErrorsWebpackPlugin(),
+        new CleanWebpackPlugin(["dist"])
     ],
     module: {
         rules: 

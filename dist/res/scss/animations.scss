@@ -1,0 +1,17 @@
+@keyframes test {
+	0% {
+		background-color: #f44336;
+		transform: rotate3d(0,1,1,0deg);
+	}
+
+	50% {
+		background-color: #2196f3;
+		transform: rotate3d(0,-1,1,180deg);
+	}
+
+
+	100% {
+		background-color: #4caf50;
+		transform: rotate3d(0,1,1,360deg);		
+	}
+}

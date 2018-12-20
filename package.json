@@ -30,6 +30,7 @@
         "terser": "latest",
         "terser-webpack-plugin": "latest",
         "copy-webpack-plugin" : "latest",
+        "clean-webpack-plugin" : "latest",
 
         "css-loader" : "latest",
         "node-sass" : "latest",
