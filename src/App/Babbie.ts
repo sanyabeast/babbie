@@ -3,6 +3,7 @@ import { Store } from "vuex"
 import StoreCreator from "./StoreCreator"
 import App from "components/App.vue"
 import axios from "axios";
+import { Promise } from "q";
 
 namespace Babbie {
 	export interface Params {
