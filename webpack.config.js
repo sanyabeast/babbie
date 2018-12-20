@@ -57,7 +57,7 @@ const config = {
                 options: {
                     loaders: {
                         ts: 'ts-loader',
-                        scss: 'vue-style-loader!css-loader!sass-loader'
+                        scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader'
                     },
                     esModule: true
                 }

@@ -16,6 +16,7 @@
         "@babel/preset-env" : "latest",
         "typescript" : "latest",
         "coffeescript" : "latest",
+        "autoprefixer" : "latest",
 
         "webpack" : "latest",
         "webpack-cli" : "latest",
@@ -46,6 +47,7 @@
         "xml-loader" : "latest",
         "coffee-loader" : "latest",
         "thread-loader" : "latest",
+        "postcss-loader" : "latest",
 
         "node-sass-magic-importer" : "latest",
         "vue-template-compiler": "latest",
