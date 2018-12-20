@@ -7,7 +7,7 @@
   		<div 
   			class="test flex-justify-center flex-align-center"
   		>
-  			<p>{{ $store.getters.randomNumber.toFixed(5) }}</p>
+  			<p>{{ Math.floor($store.getters.randomNumber * 10000) }}</p>
   		</div>
   	</div>
 </template>

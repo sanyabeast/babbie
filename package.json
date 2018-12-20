@@ -19,6 +19,11 @@
         "webpack" : "latest",
         "webpack-cli" : "latest",
         "webpack-serve" : "latest",
+        "webpack-dashboard" : "latest",
+        "webpack-bundle-analyzer" : "latest",
+        "jsdoc-webpack4-plugin" : "latest",
+        "friendly-errors-webpack-plugin" : "latest",
+        "node-notifier" : "latest",
         "html-webpack-plugin" : "latest",
         "terser": "latest",
         "terser-webpack-plugin": "latest",
@@ -32,6 +37,8 @@
         "vue-svg-loader": "latest",
         "babel-loader" : "8.0.4",
         "ts-loader" : "latest",
+        "cpp-wasm-loader" : "latest",
+        "wasm-loader" : "latest",
 
         "node-sass-magic-importer" : "latest",
         "vue-template-compiler": "latest",
@@ -46,6 +53,8 @@
 
         "tweener" : "git://github.com/sanyabeast/tweener.git",
         "unicycle" : "git://github.com/sanyabeast/unicycle.git",
+        "axios" : "latest",
+        "store" : "latest",
 
         "@types/lodash" : "latest",
 

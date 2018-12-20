@@ -2,19 +2,23 @@ import Vue from "vue"
 import Vuex from "vuex"
 import StoreCreator from "StoreCreator.ts"
 import App from "components/App.vue"
+import axios from "axios";
 
 interface BabbieParams {
 	element: string|HTMLElement;
 	package_info: object;
 }
 
+/** 
+ * Basic class
+ */
 class Babbie {
 	protected $root: Vue|null;
 	protected $store: Vuex.Store|null;
 	protected params: BabbieParams;
 
 	constructor(params: BabbieParams){
-		this.params = params;
+		this.params = params; 
 		let element: HTMLElement|null;
 
 		if (typeof params.element == "string"){

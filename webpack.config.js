@@ -4,6 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeSassMagicImporter = require('node-sass-magic-importer');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+const JsDocPlugin = require('jsdoc-webpack4-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const notifier = require('node-notifier');
 
 const env = process.env.NODE_ENV;
 const sourceMap = env === 'development';
@@ -21,6 +26,7 @@ const config = {
         extensions: [ '.tsx', '.ts', '.js' ],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
+            axios : "axios/dist/axios.min",
             unicycle: "unicycle/unicycle.js"
         }
     },
@@ -33,7 +39,13 @@ const config = {
         }),
         new CopyWebpackPlugin([
             { from: 'res', to: 'res' }
-        ])
+        ]),
+        new JsDocPlugin({
+            conf: './jsdoc.conf'
+        }),
+        new DashboardPlugin(),
+        new BundleAnalyzerPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
     ],
     module: {
         rules: 
@@ -67,6 +79,25 @@ const config = {
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
+            },
+            {
+                test: /\.(c|cpp)$/,
+                use: {
+                    loader: 'cpp-wasm-loader',
+                    options: {
+                        // emccFlags: (existingFlags: string[], mode?: "wasm"|"asmjs" ) => string[],
+                        // emccPath: String,
+                        // fetchFiles: Boolean, 
+                        // memoryClass: Boolean,
+                        // asmJs: Boolean, 
+                        // wasm: Boolean,
+                        // fullEnv: Boolean
+                    }
+                }
+            },
+            {
+                test: /\.wasm$/,
+                loader: "wasm-loader"
             },
             {
                 test: /\.scss$/,
