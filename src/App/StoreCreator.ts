@@ -9,13 +9,14 @@ import actions from "./store/actions"
 
 Vue.use(Vuex);
 
+/**StoreCreator class. DOC!! */
 class StoreCreator {
 	store: any;
 	constructor(params: any){
 		window.clog(params)
 
 		this.store = new Vuex.Store({
-		  	state : {...state, ...params},
+		  	state: {...state, ...params},
 		  	actions,
 		  	mutations,
 		  	getters,

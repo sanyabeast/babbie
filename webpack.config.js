@@ -9,6 +9,7 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 const notifier = require('node-notifier');
 const autoprefixer = require('autoprefixer');
 
@@ -48,7 +49,15 @@ const config = {
         new DashboardPlugin(),
         new BundleAnalyzerPlugin(),
         new FriendlyErrorsWebpackPlugin(),
-        new CleanWebpackPlugin(["dist"])
+        new CleanWebpackPlugin(["dist"]),
+        new TypedocWebpackPlugin({
+            out: './docs',
+            module: 'commonjs',
+            target: 'es5',
+            exclude: '**/node_modules/**/*.*',
+            experimentalDecorators: true,
+            excludeExternals: true
+        })
     ],
     module: {
         rules: 

@@ -17,6 +17,7 @@
         "typescript" : "latest",
         "coffeescript" : "latest",
         "autoprefixer" : "latest",
+        "typedoc" : "latest",
 
         "webpack" : "latest",
         "webpack-cli" : "latest",
@@ -31,6 +32,7 @@
         "terser-webpack-plugin": "latest",
         "copy-webpack-plugin" : "latest",
         "clean-webpack-plugin" : "latest",
+        "typedoc-webpack-plugin" : "latest",
 
         "css-loader" : "latest",
         "node-sass" : "latest",
