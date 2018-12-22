@@ -1,69 +1,73 @@
 /** tools */
-const path = require('path');
-const notifier = require('node-notifier');
-const autoprefixer = require('autoprefixer');
+const path = require("path");
+const notifier = require("node-notifier");
+const autoprefixer = require("autoprefixer");
 const ip = require("ip");
 const opn = require("opn");
 
 /** plugins */
-const { VueLoaderPlugin } = require('vue-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const nodeSassMagicImporter = require('node-sass-magic-importer');
+const { VueLoaderPlugin } = require("vue-loader");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const nodeSassMagicImporter = require("node-sass-magic-importer");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
-const JsDocPlugin = require('jsdoc-webpack4-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const JsDocPlugin = require("jsdoc-webpack4-plugin");
+const DashboardPlugin = require("webpack-dashboard/plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin")
+const TypedocWebpackPlugin = require("typedoc-webpack-plugin");
 
 const serverHost = ip.address() || "localhost";
 const serverPort = "8080";
 
 const env = process.env.NODE_ENV;
-const sourceMap = env === 'development';
+const sourceMap = env === "development";
 
 opn(`http://${serverHost}:${serverPort}`);
 
 const config = {
-    devtool: sourceMap ? 'cheap-module-eval-source-map' : undefined,
-    entry: path.join(__dirname, 'src', 'index.ts'),
+    devtool: sourceMap ? "cheap-module-eval-source-map" : undefined,
+    entry: path.join(__dirname, "src", "index.ts"),
     mode: env,
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "dist")
     },
     resolve: {
         modules: ["src", "src/App", "node_modules", "res"],
-        extensions: [ '.tsx', '.ts', '.js' ],
+        extensions: [ ".tsx", ".ts", ".js" ],
         alias: {
-            vue$: 'vue/dist/vue.esm.js',
+            vue$: "vue/dist/vue.esm.js",
             axios : "axios/dist/axios.min",
-            unicycle: "unicycle/unicycle.js"
+            pizzicato: "pizzicato/distr/Pizzicato.min.js",
+            pizzicato: "pizzicato/distr/Pizzicato.min.js",
+            unicycle: "unicycle/unicycle.js",
+            hotkeys: "hotkeys/build/hotkeys.min.js",
+            store: "store/dist/store.modern.min.js"
         }
     },
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            filename: path.join(__dirname, 'dist', 'index.html'),
-            template: path.join(__dirname, 'static', 'index.html'),
+            filename: path.join(__dirname, "dist", "index.html"),
+            template: path.join(__dirname, "static", "index.html"),
             inject: true,
         }),
         new CopyWebpackPlugin([
-            { from: 'res', to: 'res' }
+            { from: "res", to: "res" }
         ]),
         new JsDocPlugin({
-            conf: './jsdoc.conf'
+            conf: "./jsdoc.conf"
         }),
         new DashboardPlugin(),
         new FriendlyErrorsWebpackPlugin(),
         new CleanWebpackPlugin(["dist"]),
         new TypedocWebpackPlugin({
-            out: './docs',
-            module: 'commonjs',
-            target: 'es5',
-            exclude: '**/node_modules/**/*.*',
+            out: "./docs",
+            module: "commonjs",
+            target: "es5",
+            exclude: "**/node_modules/**/*.*",
             experimentalDecorators: true,
             excludeExternals: true
         })
@@ -74,25 +78,25 @@ const config = {
             /** vue */
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
+                loader: "vue-loader",
                 options: {
                     loaders: {
-                        ts: 'ts-loader',
+                        ts: "ts-loader",
                         scss: [
                             "vue-style-loader",
-                            { loader: 'css-loader', options: { sourceMap: true } },
+                            { loader: "css-loader", options: { sourceMap: true } },
                             {
                                 loader: "postcss-loader",
                                 options: {
                                     plugins: [
                                         autoprefixer({
-                                            browsers:['ie >= 8', 'last 4 version']
+                                            browsers:["ie >= 8", "last 4 version"]
                                         })
                                     ],
                                     sourceMap: true
                                 }
                             },
-                            { loader: 'sass-loader', options: { sourceMap: true } }
+                            { loader: "sass-loader", options: { sourceMap: true } }
                         ]
                     },
                     esModule: true
@@ -101,17 +105,16 @@ const config = {
             /** js */
             {
                 test: /\.js$/,
-                use: ["thread-loader", 'babel-loader'],
-                include: [path.join(__dirname, 'src')],
+                use: ["babel-loader"],
+                include: [path.join(__dirname, "src")],
             }, 
             /** ts */
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: [
-                    "babel-loader", 
                     {
-                        loader: 'ts-loader',
+                        loader: "ts-loader",
                         options: {
                             appendTsSuffixTo: [/\.vue$/],
                         }
@@ -121,16 +124,16 @@ const config = {
             /** file */
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
+                loader: "file-loader",
                 options: {
-                    name: '[name].[ext]?[hash]'
+                    name: "[name].[ext]?[hash]"
                 }
             },
             /** cpp */
             {
                 test: /\.(c|cpp)$/,
                 use: {
-                    loader: 'cpp-wasm-loader',
+                    loader: "cpp-wasm-loader",
                     options: {
                         // emccFlags: (existingFlags: string[], mode?: "wasm"|"asmjs" ) => string[],
                         // emccPath: String,
@@ -149,30 +152,30 @@ const config = {
                 test: /\.scss$/,
                 use: 
                 [
-                    'vue-style-loader',
-                    { loader: 'css-loader', options: { sourceMap: true } },
+                    "vue-style-loader",
+                    { loader: "css-loader", options: { sourceMap: true } },
                     {
                         loader: "postcss-loader",
                         options: {
                             plugins: [
                                 autoprefixer({
-                                    browsers:['ie >= 8', 'last 4 version']
+                                    browsers:["ie >= 8", "last 4 version"]
                                 })
                             ],
                             sourceMap: true
                         }
                     },
-                    { loader: 'sass-loader', options: { sourceMap: true } }
+                    { loader: "sass-loader", options: { sourceMap: true } }
                 ],
             }, 
             /** yaml */
-            { test: /\.yaml$/, include: [path.join(__dirname, 'res')], use: ["json-loader", 'yaml-loader'] },
+            { test: /\.yaml$/, include: [path.join(__dirname, "res")], use: ["json-loader", "yaml-loader"] },
             /** xml */
-            { test: /\.xml$/, include: [path.join(__dirname, 'res')], loader: 'xml-loader' },
+            { test: /\.xml$/, include: [path.join(__dirname, "res")], loader: "xml-loader" },
             /** coffee */
-            { test: /\.coffee$/, use: [ 'coffee-loader' ] },
+            { test: /\.coffee$/, use: [ "coffee-loader" ] },
             /** json */
-            // { test: /\.json$/, loader: 'json-loader' }
+            // { test: /\.json$/, loader: "json-loader" }
         ],
     },
     devServer: {

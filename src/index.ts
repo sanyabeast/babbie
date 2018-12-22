@@ -7,6 +7,15 @@ const Tea = require("./Tea.coffee")
 console.log(new Tea("green"))
 console.log(new Coffee("latthe"))
 
+const pizzicato = require("pizzicato");
+console.log(pizzicato)
+
+const hotkeys = require("hotkeys");
+console.log(hotkeys)
+
+const store = require("store");
+console.log(store)
+
 declare global {
     interface Window { 
     	app: Babbie.Babbie; 
