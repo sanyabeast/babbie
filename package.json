@@ -9,6 +9,13 @@
         "start" : "cross-env NODE_ENV=development node scripts/webpack_server.js"
     },
     "devDependencies" : {
+        "tweener" : "git://github.com/sanyabeast/tweener.git",
+        "unicycle" : "git://github.com/sanyabeast/unicycle.git",
+        "axios" : "latest",
+        "store" : "latest",
+        "pizzicato" : "latest",
+        "hotkeys" : "latest",
+        
         "cross-env" : "latest",
 
         "@babel/core" : "latest",
@@ -18,6 +25,7 @@
         "coffeescript" : "latest",
         "autoprefixer" : "latest",
         "typedoc" : "latest",
+        "ip" : "latest",
 
         "webpack" : "latest",
         "webpack-cli" : "latest",
@@ -62,11 +70,6 @@
         "vue-router": "^3.0.1",
 
         "opn" : "latest",
-
-        "tweener" : "git://github.com/sanyabeast/tweener.git",
-        "unicycle" : "git://github.com/sanyabeast/unicycle.git",
-        "axios" : "latest",
-        "store" : "latest",
 
         "@types/lodash" : "latest",
         "@types/node" : "latest",

@@ -1,4 +1,11 @@
+/** tools */
 const path = require('path');
+const notifier = require('node-notifier');
+const autoprefixer = require('autoprefixer');
+const ip = require("ip");
+const opn = require("opn");
+
+/** plugins */
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeSassMagicImporter = require('node-sass-magic-importer');
@@ -10,11 +17,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
-const notifier = require('node-notifier');
-const autoprefixer = require('autoprefixer');
+
+const serverHost = ip.address() || "localhost";
+const serverPort = "8080";
 
 const env = process.env.NODE_ENV;
 const sourceMap = env === 'development';
+
+opn(`http://${serverHost}:${serverPort}`);
 
 const config = {
     devtool: sourceMap ? 'cheap-module-eval-source-map' : undefined,
@@ -47,7 +57,6 @@ const config = {
             conf: './jsdoc.conf'
         }),
         new DashboardPlugin(),
-        new BundleAnalyzerPlugin(),
         new FriendlyErrorsWebpackPlugin(),
         new CleanWebpackPlugin(["dist"]),
         new TypedocWebpackPlugin({
@@ -168,7 +177,11 @@ const config = {
     },
     devServer: {
         historyApiFallback: true,
-        noInfo: true
+        noInfo: true,
+    },
+    serve : {
+        host : serverHost,
+        port: serverPort
     },
     performance: {
         hints: false
