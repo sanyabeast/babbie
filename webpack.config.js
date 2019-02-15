@@ -41,7 +41,6 @@ const config = {
             vue$: "vue/dist/vue.esm.js",
             axios : "axios/dist/axios.min",
             pizzicato: "pizzicato/distr/Pizzicato.min.js",
-            pizzicato: "pizzicato/distr/Pizzicato.min.js",
             unicycle: "unicycle/unicycle.js",
             hotkeys: "hotkeys/build/hotkeys.min.js",
             store: "store/dist/store.modern.min.js"
@@ -57,20 +56,7 @@ const config = {
         new CopyWebpackPlugin([
             { from: "res", to: "res" }
         ]),
-        new JsDocPlugin({
-            conf: "./jsdoc.conf"
-        }),
-        new DashboardPlugin(),
-        new FriendlyErrorsWebpackPlugin(),
         new CleanWebpackPlugin(["dist"]),
-        new TypedocWebpackPlugin({
-            out: "./docs",
-            module: "commonjs",
-            target: "es5",
-            exclude: "**/node_modules/**/*.*",
-            experimentalDecorators: true,
-            excludeExternals: true
-        })
     ],
     module: {
         rules: 

@@ -1,6 +1,9 @@
 import Babbie from "./App/Babbie"
 import packageInfo from "../package.json"
 import Coffee from "./Coffee.js"
+import wasmTest from "./Assembly/index.js"
+
+console.log(wasmTest)
 
 const Tea = require("./Tea.coffee")
 
